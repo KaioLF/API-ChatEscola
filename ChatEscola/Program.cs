@@ -701,6 +701,8 @@ namespace Trabalho
                     return "Turma Inexistente";
                 }
 
+                //TODO VERIFICAR SALA
+
                 if (professor == null)
                 {
                     return "Professor inexistente";
@@ -717,7 +719,11 @@ namespace Trabalho
             //atualizar ensalamento
             app.MapPost("/atualizar/ensalamento/{id}", (ChatEscolaDB chatEscolaDB, Ensalamento ensalamentoAtualizado, int id) =>
             {
+
+                
                 var ensalamento = chatEscolaDB.Ensalamentos.Find(id);
+
+                //TODO VERIFICACOES
 
                 //ensalamento.idAluno = ensalamentoAtualizado.idAluno;
                 ensalamento.idProfessor = ensalamentoAtualizado.idProfessor;

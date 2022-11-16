@@ -48,6 +48,7 @@ function cadastrarAluno()
 	.then((output) =>
 	{
 		console.log(output)
+        alert.
 		alert('Cadastro efetuado! :D')
 	})
 	//trata erro
@@ -231,4 +232,81 @@ function remover(id)
 		console.log(error)
 		alert('Não foi possível remover o aluno :/')
 	})
+}
+
+function cadastrarDisciplina(){
+    if(!validaNome("nome-disciplina")){
+        return;
+    }
+
+    if (!validaDia("dia-da-semana")) {
+        return;
+    }
+    
+      if (!validaHorario("horario")) {
+        return;
+    }
+
+    let body ={
+        "nome":document.getElementById("nome-disciplina").value,
+        "diaSemana":document.getElementById("dia-semana").value,
+        "horario":document.getElementById("horario").value
+    }
+
+//configuracao e realizacao do POST no endpoint "alunos"
+	fetch(url + "/cadastrar/disciplina",
+	{   'method': 'POST',
+		'redirect': 'follow',
+		'headers':
+		{
+			'Content-Type': 'application/json',
+			'Accept': 'application/json'
+		},
+		'body': JSON.stringify(body)
+	})
+	//checa se requisicao deu certo
+	.then((response) =>
+	{
+        console.log(response)
+		if(response.ok)
+		{
+			return response.text()
+		}
+		else
+		{
+			return response.text().then((text) =>
+			{
+				throw new Error(text)
+			})
+		}
+	})
+	//trata resposta
+	.then((output) =>
+	{
+		console.log(output)
+        alert.
+		alert('Cadastro efetuado! :D')
+	})
+	//trata erro
+	.catch((error) =>
+	{
+		console.log(error)
+		alert('Não foi possível efetuar o cadastro! :(')
+	})
+}
+
+function validaDia(){
+    let divDiaSemana = document.getElementById(id)
+	if(divDiaSemana.value == "Segunda-Feira"){
+		divDiaSemana.classList.remove('erro-input')
+		return true
+	}
+	else
+	{
+		if(!divNome.classList.contains('erro-input'))
+		{
+			divNome.classList.add('erro-input')
+		}
+		return false
+	}
 }
