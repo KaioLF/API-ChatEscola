@@ -1,5 +1,5 @@
 var url = 'https://localhost:3013'
-
+//*****************************ALUNO**************************** */
 function cadastrarAluno()
 {
 	//validacao de alguns dos inputs
@@ -213,6 +213,7 @@ function remover(id)
 	})
 }
 
+//*************************DISCIPLINA**************************** */
 function cadastrarDisciplina(){
     if(!validaNome("nome-disciplina")){
         return;
@@ -274,6 +275,29 @@ function cadastrarDisciplina(){
 	})
 }
 
+function validaNomeDisciplina(){
+
+}
+
+/*function validaNome(id)
+{
+	let divNome = document.getElementById(id)
+	if(divNome.value.trim().split(' ').length >= 2)
+	{
+		//divNome.style.border = 0
+		divNome.classList.remove('erro-input')
+		return true
+	}
+	else
+	{
+		//divNome.style.border = 'solid 1px red'
+		if(!divNome.classList.contains('erro-input'))
+		{
+			divNome.classList.add('erro-input')
+		}
+		return false
+	}
+}*/
 function validaDia(id){
     let divDiaSemana = document.getElementById(id)
 	console.log(divDiaSemana.value)
@@ -453,4 +477,9 @@ function removerDisciplina(id)
 		console.log(error)
 		alert('Não foi possível remover a disciplina :/')
 	})
+}
+
+//*************************PROFESSOR****************************** */
+function cadastrarProfessor(){
+	
 }

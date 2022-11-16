@@ -14,24 +14,22 @@
 
     <nav id="menu">
     <ul>
-        
-        <li><a href="">Início</a></li>
-        <li><a href="https://www.figma.com/proto/6DHYme8aK7Bo7ZL48I1Cau/CHAT-ESCOLA?node-id=1%3A7186&starting-point-node-id=1%3A7186">Quem Somos</a></li>
-        <li><a href="professores.html">Professores</a></li>
-        <li><a href="alunos.html">Alunos</a></li>
-        <li><a href="turmas.html">Turmas</a></li>
-        <li><a href="disciplinas.html">Disciplinas</a></li>
-        <li><a href="ensalamentos.html">Ensalamentos</a></li>
+        <li><i class="fa-solid fa-house"></i> <a href="">Início</a></li>
+        <li> <i class="fa-brands fa-figma"></i> <a href="https://www.figma.com/proto/6DHYme8aK7Bo7ZL48I1Cau/CHAT-ESCOLA?node-id=1%3A7186&starting-point-node-id=1%3A7186">Sobre Nós</a></li>
+        <li><i class="fa-solid fa-chalkboard-user"></i> <a href="professores.html">Professores</a></li>
+        <li><i class="fa-solid fa-user"></i> <a href="alunos.html">Alunos</a></li>
+        <li><i class="fa-solid fa-users"></i> <a href="turmas.html">Turmas</a></li>
+        <li> <i class="fa-solid fa-address-book"></i> <a href="disciplinas.html">Disciplinas</a></li>
+        <li> <i class="fa-solid fa-calendar-days"></i> <a href="ensalamentos.html">Ensalamentos</a></li>
+        <!--TODO sala-->
     </ul>
     </nav>
-    <div>
-        <img  src="img/logo.png">
-        <div class="form">
-    <input id="email" placeholder="Email" type="email" />
-    <input id="senha" placeholder="Senha" type="password" onblur="validaSenha(this.id)" />
-    <button>Entrar como Aluno</button>
-    <button>Entrar como Professor</button>
-    </div>
+    <div class="form">
+        <h1> Chat Escola <i id="1" class="fa-brands fa-whatsapp"></i></h1>
+        <input id="email" placeholder="Email" type="email" />
+        <input id="senha" placeholder="Senha" type="password" onblur="validaSenha(this.id)" />
+        <button id= "btn 1" type="button" class="btn btn-dark"> Entrar como Aluno</button>
+        <button id= "btn 2" type="button" class="btn btn-secondary"> Entrar como Professor</button>
     </div>
 </body>
 
