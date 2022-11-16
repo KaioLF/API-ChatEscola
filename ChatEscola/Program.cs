@@ -597,21 +597,28 @@ namespace Trabalho
 
             //cadastrar turma
             app.MapPost("/cadastrar/turma", (ChatEscolaDB chatEscolaDB, Turma turma) =>
-            {
+            { 
+                string a = "Falha no cadastro da turma.";
+
                 var disci = chatEscolaDB.Disciplinas.Find(turma.idDisciplina);
 
-                if (disci.nome.Length != 0 && disci.nome != null && disci.nome != "") {
-                    foreach(var a in chatEscolaDB.Alunos) {
-                        Console.WriteLine("AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
-                        Console.WriteLine(a.nome);
+                /*if (disci.nome.Length != 0 && disci.nome != null && disci.nome != "") {
+                    foreach(var ab in chatEscolaDB.Alunos) {
+                        foreach(var at in turma.alunos) {
+                            if(chatEscolaDB.Alunos == turma.alunos) {
+                            
+
+                            chatEscolaDB.Turmas.Add(turma);
+                            chatEscolaDB.SaveChanges();
+                            a = "Turma Cadastrada";
+                            }
+                        }
                     }
-                chatEscolaDB.Turmas.Add(turma);
-                chatEscolaDB.SaveChanges();
-                return "Turma Cadastrada";
                 } 
                 else {
-                    return "Nome de turma inválido!";
-                }
+                    a = "Nome de turma inválido!";
+                } 
+                return "a"; */
             });
 
             //atualizar turma

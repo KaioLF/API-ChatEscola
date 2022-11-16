@@ -213,7 +213,7 @@ function remover(id)
 	})
 }
 
-//*************************DISCIPLINA**************************** */
+//*************************DISCIPLINA*****************************/
 function cadastrarDisciplina(){
     if(!validaNome("nome-disciplina")){
         return;
@@ -338,7 +338,7 @@ function listarDisciplinas()
 	.then(response => response.json())
 	.then((disciplinas) =>
 	{
-		//pega div que vai conter a lista de alunos
+		//pega div que vai conter a lista de disciplinas
 		let listaDiscipinas = document.getElementById('listar-disciplinas')
 		
 		//limpa div
@@ -346,10 +346,10 @@ function listarDisciplinas()
             listaDiscipinas.removeChild(listaDiscipinas.firstChild)
         }
 		
-		//preenche div com alunos recebidos do GET
+		//preenche div com disciplinas recebidas do GET
 		for(let disciplina of disciplinas)
 		{
-			//cria div para as informacoes de um aluno
+			//cria div para as informacoes de uma disciplina
 			let divDisciplina = document.createElement('div')
 			divDisciplina.setAttribute('class', 'form')
 			
@@ -390,7 +390,7 @@ function listarDisciplinas()
 			divBotoes.appendChild(btnAtualizar)
 			divDisciplina.appendChild(divBotoes)
 			
-			//insere a div do aluno na div com a lista de alunos
+			//insere a div da disciplina na div com a lista de disciplinas
 			listaDiscipinas.appendChild(divDisciplina)
 		}
 	})
@@ -479,7 +479,117 @@ function removerDisciplina(id)
 	})
 }
 
-//*************************PROFESSOR****************************** */
+//*************************PROFESSOR*******************************/
 function cadastrarProfessor(){
-	
+	let body ={
+		"nome": document.getElementById("nome-professor"),
+		"nomeDisciplina": document.getElementById("nome-disciplina"),
+		"diaDisponivel": document.getElementById("dia-disciplina"),
+		"horarioDisponivel": document.getElementById("horario-disponivel")
+	}
+
+	//configuracao e realizacao do POST no endpoint "professor"
+	fetch(url + "/cadastrar/professor",
+	{   'method': 'POST',
+		'redirect': 'follow',
+		'headers':
+		{
+			'Content-Type': 'application/json',
+			'Accept': 'application/json'
+		},
+		'body': JSON.stringify(body)
+	})
+	//checa se requisicao deu certo
+	.then((response) =>
+	{
+        console.log(response)
+		if(response.ok)
+		{
+			return response.text()
+		}
+		else
+		{
+			return response.text().then((text) =>
+			{
+				throw new Error(text)
+			})
+		}
+	})
+	//trata resposta
+	.then((output) =>
+	{
+		console.log(output)
+        alert.
+		alert('Cadastro efetuado! :D')
+	})
+	//trata erro
+	.catch((error) =>
+	{
+		console.log(error)
+		alert('Não foi possível efetuar o cadastro! :(')
+	})
+}
+
+function listarProfessores(){
+	//da um GET no endpoint "professores"
+	fetch(url + '/professores')
+	.then(response => response.json())
+	.then((professores) =>
+	{
+		//pega div que vai conter a lista de professores
+		let listaProfessores = document.getElementById('listar-professores')
+		
+		//limpa div
+        while(listaProfessores.firstChild){
+            listaProfessores.removeChild(listaProfessores.firstChild)
+        }
+		
+		//preenche div com professores recebidos do GET
+		for(let professor of professores)
+		{
+			//cria div para as informacoes de um professor
+			let divProfessor = document.createElement('div')
+			divProfessor.setAttribute('class', 'form')
+			
+			//pega o nome do professor
+			let divNomeProfessor = document.createElement('input')
+			divNomeProfessor.placeholder = 'Nome'
+			divNomeProfessor.value = professor.nome
+			divProfessor.appendChild(divNomeDisciplina)
+
+			//pega o dia da semana da disciplina
+			let divDiaSemana = document.createElement('input')
+			divDiaSemana.placeholder = 'Dia da Semana'
+			divDiaSemana.value = disciplina.diaSemana
+			divDisciplina.appendChild(divDiaSemana)
+
+			//pega o horario da disciplina
+			let divHorario = document.createElement('input')
+			divHorario.placeholder = 'Dia da Semana'
+			divHorario.value = disciplina.horario
+			divDisciplina.appendChild(divHorario)
+
+			//cria o botao para remover a disciplina
+			let btnRemover = document.createElement('button')
+			btnRemover.innerHTML = 'Remover'
+			btnRemover.onclick = u => removerDisciplina(disciplina.id)
+			btnRemover.style.marginRight = '5px'
+			
+			//cria o botao para atualizar a disciplina
+			let btnAtualizar = document.createElement('button')
+			btnAtualizar.innerHTML = 'Atualizar'
+			btnAtualizar.onclick = u => atualizarDisciplina(disciplina.id, divNomeDisciplina, divDiaSemana, divHorario)
+			btnAtualizar.style.marginLeft = '5px'
+			
+			//cria a div com os dois botoes
+			let divBotoes = document.createElement('div')
+			divBotoes.style.display = 'flex'
+			divBotoes.appendChild(btnRemover)
+			divBotoes.appendChild(btnAtualizar)
+			divDisciplina.appendChild(divBotoes)
+			
+			//insere a div do aluno na div com a lista de alunos
+			listaDiscipinas.appendChild(divDisciplina)
+		}
+	})
 }

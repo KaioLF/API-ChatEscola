@@ -3,6 +3,13 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Open Sans", sans-serif;
+    font-size: medium;
+
+}
+
+#icon i {
+    font-size: 128px;
+    animation: size 4s infinite 1s;
 }
 
 #menu ul {
@@ -17,9 +24,10 @@
 
 #menu ul li a {
     display: inline-block;
-    padding: 20px;
+    padding: 25px;
     text-decoration: none;
-   transition: background.4s;
+    transition: background.4s;
+
 }
 
 #menu ul li a hover {
@@ -36,7 +44,7 @@
     z-index: 1;
 }
 
-.form button entrar aluno,
+.form button,
 input {
     border: 0;
     font-size: 14px;
@@ -46,13 +54,14 @@ input {
 }
 
 .form button {
-    background: #ff4d4d;
+
     color: #FFFFFF;
     cursor: pointer;
+    padding: 20px;
 }
 
 .form button:active {
-    background: #cc0066;
+    background: #0c8b08;
 }
 
 .form input {
