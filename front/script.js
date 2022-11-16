@@ -8,7 +8,7 @@ function cadastrarAluno()
 	{
 		return
 	}
-	//construcao do json que vai no body da criacao de usuario	
+	//construcao do json que vai no body da criacao de aluno	
 	
 	let body =
 	{
@@ -95,28 +95,28 @@ function listar()
         }
 		
 		//preenche div com alunos recebidos do GET
-		for(let usuario of alunos)
+		for(let aluno of alunos)
 		{
-			//cria div para as informacoes de um usuario
+			//cria div para as informacoes de um aluno
 			let divAluno = document.createElement('div')
 			divAluno.setAttribute('class', 'form')
 			
-			//pega o nome do usuario
+			//pega o nome do aluno
 			let divNome = document.createElement('input')
 			divNome.placeholder = 'Nome'
-			divNome.value = usuario.nome
+			divNome.value = aluno.nome
 			divAluno.appendChild(divNome)
 			
-			//cria o botao para remover o usuario
+			//cria o botao para remover o aluno
 			let btnRemover = document.createElement('button')
 			btnRemover.innerHTML = 'Remover'
-			btnRemover.onclick = u => remover(usuario.id)
+			btnRemover.onclick = u => remover(aluno.id)
 			btnRemover.style.marginRight = '5px'
 			
-			//cria o botao para atualizar o usuario
+			//cria o botao para atualizar o aluno
 			let btnAtualizar = document.createElement('button')
 			btnAtualizar.innerHTML = 'Atualizar'
-			btnAtualizar.onclick = u => atualizar(usuario.id, divNome)
+			btnAtualizar.onclick = u => atualizar(aluno.id, divNome)
 			btnAtualizar.style.marginLeft = '5px'
 			
 			//cria a div com os dois botoes
@@ -126,35 +126,13 @@ function listar()
 			divBotoes.appendChild(btnAtualizar)
 			divAluno.appendChild(divBotoes)
 			
-			//insere a div do usuario na div com a lista de alunos
+			//insere a div do aluno na div com a lista de alunos
 			listaAlunos.appendChild(divAluno)
 		}
 	})
 }
 
-//EXEMPLO DE FUNCAO QUE CRIA OPTION DE SELECAO DE alunos
-function foo()
-{
-	//da um GET no endpoint "alunos"
-	fetch(url + '/alunos')
-	.then(response => response.json())
-	.then((alunos) =>
-	{
-		//PEGA OPTION VAZIA NO HTML
-		let selALunos = document.getElementById('option-alunos')
-				
-		//PREENCHE ELA COM O NOME E O ID DOS alunos
-		for(let alunos of alunos)
-		{
-			let optAlunos = document.createElement('option')
-			optAlunos.innerHTML = aluno.nome
-			optAlunos.value = aluno.id
-			selALunos.appendChild(optAlunos)
-		}
-	})
-}
-
-function atualizar(id, divNome, divEmail, divCpf)
+function atualizar(id, divNome)
 {
 	let body =
 	{
@@ -190,12 +168,13 @@ function atualizar(id, divNome, divEmail, divCpf)
 	{
 		listar()
 		console.log(output)
-		alert('Usuário atualizado! \\o/')
+		alert('Aluno atualizado! \\o/')
 	})
 	.catch((error) =>
 	{
 		console.log(error)
-		alert('Não foi possível atualizar o usuário :/')
+		console.log("erro")
+		alert('Não foi possível atualizar o aluno :/')
 	})
 }
 
@@ -239,18 +218,18 @@ function cadastrarDisciplina(){
         return;
     }
 
-    if (!validaDia("dia-da-semana")) {
+    if (!validaDia("dia-semana")) {
         return;
     }
     
-      if (!validaHorario("horario")) {
+    if (!validaHorario("horario-disciplina")) {
         return;
     }
 
     let body ={
         "nome":document.getElementById("nome-disciplina").value,
         "diaSemana":document.getElementById("dia-semana").value,
-        "horario":document.getElementById("horario").value
+        "horario":document.getElementById("horario-disciplina").value
     }
 
 //configuracao e realizacao do POST no endpoint "alunos"
@@ -295,18 +274,183 @@ function cadastrarDisciplina(){
 	})
 }
 
-function validaDia(){
+function validaDia(id){
     let divDiaSemana = document.getElementById(id)
-	if(divDiaSemana.value == "Segunda-Feira"){
+	console.log(divDiaSemana.value)
+	if(divDiaSemana.value == "Segunda-Feira" || divDiaSemana.value == "Terça-Feira" || divDiaSemana.value == "Quarta-Feira" || divDiaSemana.value == "Quinta-Feira" || divDiaSemana.value == "Sexta-Feira"){
 		divDiaSemana.classList.remove('erro-input')
 		return true
 	}
 	else
 	{
-		if(!divNome.classList.contains('erro-input'))
+		if(!divDiaSemana.classList.contains('erro-input'))
 		{
-			divNome.classList.add('erro-input')
+			divDiaSemana.classList.add('erro-input')
 		}
 		return false
 	}
+}
+function validaHorario(id){
+    let divHorario = document.getElementById(id)
+	console.log(divHorario.value)
+	if(divHorario.value == "Manhã" || divHorario.value == "Tarde" || divHorario.value == "Noite"){
+		divHorario.classList.remove('erro-input')
+		return true
+	}
+	else
+	{
+		if(!divHorario.classList.contains('erro-input'))
+		{
+			divHorario.classList.add('erro-input')
+		}
+		return false
+	}
+}
+
+function listarDisciplinas()
+{
+	//da um GET no endpoint "disciplinas"
+	fetch(url + '/disciplinas')
+	.then(response => response.json())
+	.then((disciplinas) =>
+	{
+		//pega div que vai conter a lista de alunos
+		let listaDiscipinas = document.getElementById('listar-disciplinas')
+		
+		//limpa div
+        while(listaDiscipinas.firstChild){
+            listaDiscipinas.removeChild(listaDiscipinas.firstChild)
+        }
+		
+		//preenche div com alunos recebidos do GET
+		for(let disciplina of disciplinas)
+		{
+			//cria div para as informacoes de um aluno
+			let divDisciplina = document.createElement('div')
+			divDisciplina.setAttribute('class', 'form')
+			
+			//pega o nome da disciplina
+			let divNomeDisciplina = document.createElement('input')
+			divNomeDisciplina.placeholder = 'Nome'
+			divNomeDisciplina.value = disciplina.nome
+			divDisciplina.appendChild(divNomeDisciplina)
+
+			//pega o dia da semana da disciplina
+			let divDiaSemana = document.createElement('input')
+			divDiaSemana.placeholder = 'Dia da Semana'
+			divDiaSemana.value = disciplina.diaSemana
+			divDisciplina.appendChild(divDiaSemana)
+
+			//pega o horario da disciplina
+			let divHorario = document.createElement('input')
+			divHorario.placeholder = 'Dia da Semana'
+			divHorario.value = disciplina.horario
+			divDisciplina.appendChild(divHorario)
+
+			//cria o botao para remover a disciplina
+			let btnRemover = document.createElement('button')
+			btnRemover.innerHTML = 'Remover'
+			btnRemover.onclick = u => removerDisciplina(disciplina.id)
+			btnRemover.style.marginRight = '5px'
+			
+			//cria o botao para atualizar a disciplina
+			let btnAtualizar = document.createElement('button')
+			btnAtualizar.innerHTML = 'Atualizar'
+			btnAtualizar.onclick = u => atualizarDisciplina(disciplina.id, divNomeDisciplina, divDiaSemana, divHorario)
+			btnAtualizar.style.marginLeft = '5px'
+			
+			//cria a div com os dois botoes
+			let divBotoes = document.createElement('div')
+			divBotoes.style.display = 'flex'
+			divBotoes.appendChild(btnRemover)
+			divBotoes.appendChild(btnAtualizar)
+			divDisciplina.appendChild(divBotoes)
+			
+			//insere a div do aluno na div com a lista de alunos
+			listaDiscipinas.appendChild(divDisciplina)
+		}
+	})
+}
+
+function atualizarDisciplina(id, divNomeDisciplina, divDiaSemana, divHorario)
+{
+	let body =
+	{
+		'nome': divNomeDisciplina.value,
+		"diaSemana": divDiaSemana.value,
+		"horario": divHorario.value
+	}
+	
+	fetch(url + "/atualizar/disciplina/" + id,
+	{
+		'method': 'POST',
+		'redirect': 'follow',
+		'headers':
+		{
+			'Content-Type': 'application/json',
+			'Accept': 'application/json'
+		},
+		'body': JSON.stringify(body)
+	})
+	.then((response) =>
+	{
+		if(response.ok)
+		{
+			return response.text()
+		}
+		else
+		{
+			return response.text().then((text) =>
+			{
+				throw new Error(text)
+			})
+		}
+	})
+	.then((output) =>
+	{
+		listarDisciplinas()
+		console.log(output)
+		alert('Disciplina atualizada! \\o/')
+	})
+	.catch((error) =>
+	{
+		console.log(error)
+		console.log("erro")
+		alert('Não foi possível atualizar a disciplina :/')
+	})
+}
+
+function removerDisciplina(id)
+{
+    console.log(url + '/deletar/disciplina/' + id)
+	fetch(url + '/deletar/disciplina/' + id,
+	{
+		'method': 'POST',
+		'redirect': 'follow'
+	})
+	.then((response) =>
+	{
+		if(response.ok)
+		{
+			return response.text()
+		}
+		else
+		{
+			return response.text().then((text) =>
+			{
+				throw new Error(text)
+			})
+		}
+	})
+	.then((output) =>
+	{
+		listar()
+		console.log(output)
+		alert('Disciplina removida! >=]')
+	})
+	.catch((error) =>
+	{
+		console.log(error)
+		alert('Não foi possível remover a disciplina :/')
+	})
 }

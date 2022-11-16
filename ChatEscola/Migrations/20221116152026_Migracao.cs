@@ -45,7 +45,6 @@ namespace ChatEscola.Migrations
                     id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     nome = table.Column<string>(type: "TEXT", nullable: true),
-                    idDisciplina = table.Column<int>(type: "INTEGER", nullable: false),
                     nomeDisciplina = table.Column<string>(type: "TEXT", nullable: true),
                     diaDisponivel = table.Column<string>(type: "TEXT", nullable: true),
                     horarioDisponivel = table.Column<string>(type: "TEXT", nullable: true)

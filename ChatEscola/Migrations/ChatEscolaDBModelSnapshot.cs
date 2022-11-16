@@ -88,9 +88,6 @@ namespace ChatEscola.Migrations
                     b.Property<string>("horarioDisponivel")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("idDisciplina")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("nome")
                         .HasColumnType("TEXT");
 

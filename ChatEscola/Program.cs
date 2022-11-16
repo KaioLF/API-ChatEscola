@@ -24,7 +24,7 @@ namespace Trabalho
     {//VALIDAR PROFS E HORARIOS
         public int id { get; set; }
         public string? nome { get; set; }
-        public int idDisciplina { get; set; }
+        //public int idDisciplina { get; set; }
         public string? nomeDisciplina { get; set; }
         public string? diaDisponivel { get; set; }
         public string? horarioDisponivel { get; set; }
@@ -533,7 +533,7 @@ namespace Trabalho
             });
 
             //atualizar professor
-            app.MapPost("/atualizar/professor/{id}", (ChatEscolaDB chatEscolaDB, Professor professorAtualizado, /*Disciplina disciplinaAtualizada*/ int id) =>
+            app.MapPost("/atualizar/professor/{id}", (ChatEscolaDB chatEscolaDB, Professor professorAtualizado, int id) =>
             {
                 var professor = chatEscolaDB.Professores.Find(id);
 
@@ -544,7 +544,6 @@ namespace Trabalho
                         if(professorAtualizado.nomeDisciplina == disciplina.nome){
                             if(professorAtualizado.diaDisponivel == disciplina.diaSemana){
                                 if(professorAtualizado.horarioDisponivel == disciplina.horario){
-                                    professor.idDisciplina = professorAtualizado.idDisciplina;
                                     professor.nomeDisciplina = professorAtualizado.nomeDisciplina;
                                     professor.diaDisponivel = professorAtualizado.diaDisponivel;
                                     professor.horarioDisponivel = professorAtualizado.horarioDisponivel;

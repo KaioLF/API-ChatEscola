@@ -12,10 +12,10 @@
         <div class="form">
             <h2>Cadastro de Disciplinas</h2>
             <input id="nome-disciplina" placeholder="Nome da Disciplina" type="text" onblur="validaNome(this.id)" />
-            <input id="dia-semana" placeholder="Dia da Semana" type="date" />
-            <input id="horario" placeholder="Horário da Disciplina" type="" />
-            <button onclick="cadastrar()">Cadastrar</button>
-            <p>Ir para <a href="listar.html">lista de disciplinas</a></p>
+            <input id="dia-semana" placeholder="Dia da Semana" type="text" onblur="validaDia(this.id)" />
+            <input id="horario-disciplina" placeholder="Horário da Disciplina" type="text" onblur="validaHorario(this.id)"/>
+            <button onclick="cadastrarDisciplina()">Cadastrar</button>
+            <p>Ir para <a href="listarDisciplina.html">lista de disciplinas</a></p>
         </div>
     </body>
 </html>
