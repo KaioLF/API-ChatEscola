@@ -11,7 +11,7 @@ using Trabalho;
 namespace ChatEscola.Migrations
 {
     [DbContext(typeof(ChatEscolaDB))]
-    [Migration("20221116013656_Migracao")]
+    [Migration("20221116052403_Migracao")]
     partial class Migracao
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

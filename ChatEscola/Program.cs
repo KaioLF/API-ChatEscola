@@ -108,19 +108,29 @@ namespace Trabalho
 
             //cadastrar aluno
             app.MapPost("/cadastrar/aluno", (ChatEscolaDB chatEscolaDB, Aluno aluno) =>
-            {
-                chatEscolaDB.Alunos.Add(aluno);
-                chatEscolaDB.SaveChanges();
-                return "Aluno Cadastrado";
+            { string a = "Falha no cadastro.";
+                if(aluno.nome.Length != 0 && aluno.nome != "" && aluno.nome != null){
+                    chatEscolaDB.Alunos.Add(aluno);
+                    chatEscolaDB.SaveChanges();
+                    a = "cadastro realizado com sucesso.";
+                    
+                }
+                return a;
+                
             });
 
             //atualizar aluno
             app.MapPost("/atualizar/aluno/{id}", (ChatEscolaDB chatEscolaDB, Aluno alunoAtualizado, int id) =>
             {
                 var aluno = chatEscolaDB.Alunos.Find(id);
+                if(alunoAtualizado.nome.Length != 0 && alunoAtualizado.nome != "" && alunoAtualizado.nome != null){
                 aluno.nome = alunoAtualizado.nome;
                 chatEscolaDB.SaveChanges();
-                return "Aluno Atualizado";
+                return "Aluno Atualizado"; 
+                }
+                else {
+                    return "Novo nome inválido!";
+                }
             });
 
             //deletar aluno
@@ -292,7 +302,7 @@ namespace Trabalho
             {
                 var disc = chatEscolaDB.Disciplinas.Find(id);
 
-                if (disciplinaAtualizada.nome.Length == 0)
+                if (disciplinaAtualizada.nome.Length == 0 || disciplinaAtualizada.nome == null || disciplinaAtualizada.nome == "")
                 {
                     return "Nome da disciplina inválido";
                 }
@@ -586,15 +596,24 @@ namespace Trabalho
                 return chatEscolaDB.Turmas.Find(id);
             });
 
-            /*//cadastrar turma
+            //cadastrar turma
             app.MapPost("/cadastrar/turma", (ChatEscolaDB chatEscolaDB, Turma turma) =>
             {
-                var disc = chatEscolaDB.Disciplinas.Find(disciplina.id);
+                var disci = chatEscolaDB.Disciplinas.Find(turma.idDisciplina);
 
+                if (disci.nome.Length != 0 && disci.nome != null && disci.nome != "") {
+                    foreach(var a in chatEscolaDB.Alunos) {
+                        Console.WriteLine("AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII");
+                        Console.WriteLine(a.nome);
+                    }
                 chatEscolaDB.Turmas.Add(turma);
                 chatEscolaDB.SaveChanges();
                 return "Turma Cadastrada";
-            });*/
+                } 
+                else {
+                    return "Nome de turma inválido!";
+                }
+            });
 
             //atualizar turma
             app.MapPost("/atualizar/turma/{id}", (ChatEscolaDB chatEscolaDB, Turma turmaAtualizada, int id) =>
