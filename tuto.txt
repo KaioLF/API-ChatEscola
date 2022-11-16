@@ -1,0 +1,15 @@
+RODE OS COMANDOS ABAIXO PARA CRIAR O PROJETO
+
+dotnet new webapi -minimal -o NomeDoProjeto
+cd NomeDoProjeto
+
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite --version 6.0
+dotnet add package Microsoft.EntityFrameworkCore.Design --version 6.0
+dotnet tool install --global dotnet-ef
+
+dotnet add package Microsoft.EntityFrameworkCore.Proxies --version 6.0
+
+dotnet ef migrations add NomeDaMigracao
+dotnet ef database update
+
+Obs: para cada atualizacao nas classes eh necessario rodar os dois ultimos comandos mudando o nome da migracao

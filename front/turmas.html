@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Turmas</title>
+		<link rel="stylesheet" href="style.css">
+		<script src="script.js"></script>
+	</head>
+    <body>
+        <div class="form">
+            <h2>Cadastro de Turmas</h2>
+            <input id="id-disciplina" placeholder="Código da Disciplina" type="number"/>
+            <input id="nome-disciplina" placeholder="Nome da Disciplina" type="text"/>
+            <select>
+                <option>manhã</option>
+                <option>tarde</option>
+                <option>noite</option>
+            </select>
+            <input id="horario" placeholder="Horário da Disciplina" type="text"/>
+            <input id="alunos" placeholder="Nome dos alunos" type="text"/>
+            <button onclick="cadastrar()">Cadastrar</button>
+            <p>Ir para <a href="listar.html">lista de turmas</a></p>
+        </div>
+    </body>
+</html>
+

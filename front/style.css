@@ -1,0 +1,66 @@
+* {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+}
+
+#menu ul {
+    list-style: none;
+    padding: 0;
+    background-color: #29CFD6 ;
+}
+
+#menu ul li {
+    display: inline;
+}
+
+#menu ul li a {
+    display: inline-block;
+    padding: 20px;
+    text-decoration: none;
+   transition: background.4s;
+}
+
+#menu ul li a hover {
+    background-color: #FFFFFF
+}
+
+.form {
+    box-shadow: 0 0 1px 0;
+    position: relative;
+    margin: 50px auto;
+    max-width: 320px;
+    padding: 30px;
+    text-align: center;
+    z-index: 1;
+}
+
+.form button entrar aluno,
+input {
+    border: 0;
+    font-size: 14px;
+    outline: 0;
+    padding: 20px;
+    width: 100%;
+}
+
+.form button {
+    background: #ff4d4d;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+.form button:active {
+    background: #cc0066;
+}
+
+.form input {
+    background: #e2e2e2e2;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+.erro-input {
+    border: solid 1px red;
+}

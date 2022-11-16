@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Professor</title>
+		<link rel="stylesheet" href="style.css">
+		<script src="/teste.js"></script>
+	</head>
+    <body>
+        <div class="form">
+            <h2>Cadastro de Professores(as)</h2>
+            <input id="nome-professor" placeholder="Nome Professor" type="text" onblur="validaNome(this.id)" />
+            <input id="id-disciplina" placeholder="Código da Disciplina" type="number" />
+            <input id="nome-disciplina" placeholder="Nome da Disciplina" type="text" />
+            <input id="dia-disciplina" placeholder="Dia Disponível" type="text" />
+            <input id="horario-disponivel" placeholder="Horário Disponível" type="text" />
+            <button onclick="cadastrarTeste()">Cadastrar</button>
+            <p>Ir para <a href="listar.html">lista de professores</a></p>
+        </div>
+    </body>
+<html>
+    
