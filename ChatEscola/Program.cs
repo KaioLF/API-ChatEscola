@@ -24,7 +24,6 @@ namespace Trabalho
     {//VALIDAR PROFS E HORARIOS
         public int id { get; set; }
         public string? nome { get; set; }
-        //public int idDisciplina { get; set; }
         public string? nomeDisciplina { get; set; }
         public string? diaDisponivel { get; set; }
         public string? horarioDisponivel { get; set; }
@@ -504,7 +503,7 @@ namespace Trabalho
             app.MapPost("/cadastrar/professor", (ChatEscolaDB chatEscolaDB, Professor professor) =>
             { string a = "Erro ao cadastrar.";
                 if(professor.nome.Length > 0){
-                    foreach(var disciplina in  chatEscolaDB.Disciplinas){
+                    foreach(var disciplina in chatEscolaDB.Disciplinas){
                         if(professor.nomeDisciplina == disciplina.nome){
                             if(professor.diaDisponivel == disciplina.diaSemana){
                                 if(professor.horarioDisponivel == disciplina.horario){
@@ -580,7 +579,7 @@ namespace Trabalho
             });
             #endregion
 
-            #region FUNCOES TURMAS
+            #region FUNCOES TURMAS\
             //*************FUNCOES TURMAS*************
 
             //listar todas as turmas
@@ -601,24 +600,21 @@ namespace Trabalho
                 string a = "Falha no cadastro da turma.";
 
                 var disci = chatEscolaDB.Disciplinas.Find(turma.idDisciplina);
+                
+                //TODO VERIFICAR DISCI CADASTRADA
+                    foreach(var alunonobanco in chatEscolaDB.Alunos) {
 
-                /*if (disci.nome.Length != 0 && disci.nome != null && disci.nome != "") {
-                    foreach(var ab in chatEscolaDB.Alunos) {
-                        foreach(var at in turma.alunos) {
-                            if(chatEscolaDB.Alunos == turma.alunos) {
-                            
+                        foreach(var alunonaturma in turma.alunos) {
 
+                            if(alunonobanco.nome == alunonaturma.nome) {               
                             chatEscolaDB.Turmas.Add(turma);
                             chatEscolaDB.SaveChanges();
-                            a = "Turma Cadastrada";
+                            a = "Turma Cadastrada"; 
                             }
                         }
                     }
-                } 
-                else {
-                    a = "Nome de turma inválido!";
-                } 
-                return "a"; */
+                
+                return a; 
             });
 
             //atualizar turma
@@ -701,18 +697,26 @@ namespace Trabalho
                 //var aluno = chatEscolaDB.Alunos.Find(ensalamento.idAluno);
                 var turma = chatEscolaDB.Turmas.Find(ensalamento.idTurma);
                 var professor = chatEscolaDB.Professores.Find(ensalamento.idProfessor);
+                var sala = chatEscolaDB.Salas.Find(ensalamento.idSala);
+
+                int qtdalunos = 0;
+
+                foreach (var aluno in turma.alunos) 
+                {
+                    qtdalunos = qtdalunos + 1; 
+                }
 
                 if (turma == null)
                 {
                     return "Turma Inexistente";
-                }
-
-                //TODO VERIFICAR SALA
-
-                if (professor == null)
+                } 
+                else if (professor == null)
                 {
                     return "Professor inexistente";
                 }
+                else if(sala.capacidade < qtdalunos) {
+                    return "Não há lugar suficiente para todos os alunos da turma na sala.";
+                } 
                 else
                 {
                     chatEscolaDB.Ensalamentos.Add(ensalamento);

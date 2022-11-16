@@ -14,24 +14,24 @@
     <body>
         <nav id="menu">
             <ul>
-                <li><i class="fa-solid fa-house"></i> <a href="">Início</a></li>
+                <li><i class="fa-solid fa-house"></i> <a href="index.html">Início</a></li>
                 <li> <i class="fa-brands fa-figma"></i> <a href="https://www.figma.com/proto/6DHYme8aK7Bo7ZL48I1Cau/CHAT-ESCOLA?node-id=1%3A7186&starting-point-node-id=1%3A7186">Sobre Nós</a></li>
                 <li><i class="fa-solid fa-chalkboard-user"></i> <a href="professores.html">Professores</a></li>
                 <li><i class="fa-solid fa-user"></i> <a href="alunos.html">Alunos</a></li>
                 <li><i class="fa-solid fa-users"></i> <a href="turmas.html">Turmas</a></li>
                 <li> <i class="fa-solid fa-address-book"></i> <a href="disciplinas.html">Disciplinas</a></li>
                 <li> <i class="fa-solid fa-calendar-days"></i> <a href="ensalamentos.html">Ensalamentos</a></li>
-                <!--TODO sala-->
+                <li> <i class="fa-solid fa-calendar-days"></i> <a href="salas.html">Salas</a></li>
             </ul>
         </nav>
         <div class="form">
             <h2>Cadastro de Professores(as)</h2>
-            <input id="nome-professor" placeholder="Nome Professor" type="text" onblur="validaNomeProfessor(this.id)" />
-            <input id="nome-disciplina" placeholder="Nome da Disciplina" type="text" />
-            <input id="dia-disponivel" placeholder="Dia Disponível" type="text" />
-            <input id="horario-disponivel" placeholder="Horário Disponível" type="text" />
-            <button type="button" class="btn btn-success" onclick="cadastrarTeste()">Cadastrar</button>
-            <p>Ir para <a href="listar.html">lista de professores</a></p>
+            <input id="nome-professor" placeholder="Nome Professor" type="text" onblur="validaNomeProfessor(this.id)"/>
+            <input id="nome-disciplina" placeholder="Nome da Disciplina" type="text" onblur="validaNomeDisciplinaProfessor(this.id)"/>
+            <input id="dia-disponivel" placeholder="Dia Disponível" type="text" onblur="validaDiaDisponivel(this.id)" />
+            <input id="horario-disponivel" placeholder="Horário Disponível" type="text" onblur="validaHorarioDisponivel(this.id)"/>
+            <button type="button" class="btn btn-success" onclick="cadastrarProfessor()">Cadastrar</button>
+            <p>Ir para <a href="listarProfessor.html">lista de professores</a></p>
         </div>
     </body>
 <html>

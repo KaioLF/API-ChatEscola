@@ -10,9 +10,8 @@
         <script src="https://kit.fontawesome.com/de8e315b1c.js" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	</head>
-
     <body>
-        <nav>
+        <nav id="menu">
             <ul>
                 <li><i class="fa-solid fa-house"></i> <a href="">Início</a></li>
                 <li> <i class="fa-brands fa-figma"></i> <a href="https://www.figma.com/proto/6DHYme8aK7Bo7ZL48I1Cau/CHAT-ESCOLA?node-id=1%3A7186&starting-point-node-id=1%3A7186">Sobre Nós</a></li>
@@ -21,21 +20,15 @@
                 <li><i class="fa-solid fa-users"></i> <a href="turmas.html">Turmas</a></li>
                 <li> <i class="fa-solid fa-address-book"></i> <a href="disciplinas.html">Disciplinas</a></li>
                 <li> <i class="fa-solid fa-calendar-days"></i> <a href="ensalamentos.html">Ensalamentos</a></li>
-                <!--TODO sala-->
+                <li> <i class="fa-solid fa-calendar-days"></i> <a href="salas.html">Salas</a></li>
             </ul>
         </nav>
         <div class="form">
             <h2>Cadastro de Turmas</h2>
-            <input id="id-disciplina" placeholder="Código da Disciplina" type="number"/>
+            <input id="codigo-disciplina" placeholder="Código da Disciplina" type="number"/>
             <input id="nome-disciplina" placeholder="Nome da Disciplina" type="text"/>
-            <select>
-                <option>manhã</option>
-                <option>tarde</option>
-                <option>noite</option>
-            </select>
-            <input id="horario" placeholder="Horário da Disciplina" type="text"/>
-            <input id="alunos" placeholder="Nome dos alunos" type="text"/>
-            <button onclick="cadastrar()">Cadastrar</button>
+            <input id="lista-alunos" placeholder="Lista de Alunos da Turma" type="text"/>
+            <button onclick="cadastrarTurma()">Cadastrar</button>
             <p>Ir para <a href="listar.html">lista de turmas</a></p>
         </div>
     </body>
