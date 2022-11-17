@@ -13,22 +13,31 @@
     <body>
         <nav id="menu">
             <ul>
-                <li><i class="fa-solid fa-house"></i> <a href="index.html">Início</a></li>
-                <li> <i class="fa-brands fa-figma"></i> <a href="https://www.figma.com/proto/6DHYme8aK7Bo7ZL48I1Cau/CHAT-ESCOLA?node-id=1%3A7186&starting-point-node-id=1%3A7186">Sobre Nós</a></li>
-                <li><i class="fa-solid fa-chalkboard-user"></i> <a href="professores.html">Professores</a></li>
-                <li><i class="fa-solid fa-user"></i> <a href="alunos.html">Alunos</a></li>
-                <li><i class="fa-solid fa-users"></i> <a href="turmas.html">Turmas</a></li>
-                <li> <i class="fa-solid fa-address-book"></i> <a href="disciplinas.html">Disciplinas</a></li>
-                <li> <i class="fa-solid fa-calendar-days"></i> <a href="ensalamentos.html">Ensalamentos</a></li>
-                <li> <i class="fa-solid fa-calendar-days"></i> <a href="salas.html">Salas</a></li>
+                <div class="row">
+                    <div class="col col-md-11">
+                        <li> <a href="index.html"> <i class="fa-solid fa-house"></i> Início </a> </li>
+                        <li> <a
+                            href="https://www.figma.com/proto/6DHYme8aK7Bo7ZL48I1Cau/CHAT-ESCOLA?node-id=1%3A7186&starting-point-node-id=1%3A7186"> <i class="fa-brands fa-figma"></i> Sobre
+                                Nós</a> </li>
+                        <li> <a href="professores.html"> <i class="fa-solid fa-chalkboard-user"> </i> Professores</a> </li>
+                        <li> <a href="alunos.html"> <i class="fa-solid fa-user"> </i> Alunos </a> </li>
+                        <li> <a href="turmas.html"> <i class="fa-solid fa-users"> </i> Turmas </a> </li>
+                        <li> <a href="disciplinas.html"> <i class="fa-solid fa-address-book"> </i> Disciplinas </a> </li>
+                        <li> <a href="ensalamentos.html"> <i class="fa-solid fa-calendar-days"> </i> Ensalamentos </a> </li>
+                        <li> <a href="salas.html"> <i class="fa-solid fa-door-open"></i> Salas</a></li>
+                    </div>
+                    <div class="col col-md-1">
+                        <li> <a href="#"> <i class="fa-solid fa-right-to-bracket"></i> Entrar</a> </li>
+                    </div>
+                </div>
             </ul>
         </nav>
         <div class="form">
-            <h2>Cadastro de Alunos(as)</h2>
+            <h1> Cadastro de Alunos(as) <i class="fa-1x fa-solid fa-user"> </i></h1>
             <input id="nome-aluno" placeholder="Nome do Aluno" type="text" onblur="validaNome(this.id)"/>
             <div style="display:flex">
             </div>
-            <button onclick="cadastrarAluno()">Cadastrar</button>
+            <button type="button" class="btn btn-success" onclick="cadastrarAluno()">Cadastrar</button>
             <p>Ir para <a href="listar.html">lista de alunos</a></p>
         </div>
     </body>

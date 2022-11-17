@@ -655,7 +655,7 @@ function listarProfessor(){
 			//pega o dia da semana disponível do professor
 			let divDiaSemanaDisponivel = document.createElement('input')
 			divDiaSemanaDisponivel.placeholder = 'Dia da Semana Disponível'
-			divDiaSemanaDisponivel.value = professor.diaDisponivel.value
+			divDiaSemanaDisponivel.value = professor.diaDisponivel
 			divProfessor.appendChild(divDiaSemanaDisponivel)
 
 			//pega o horario disponível do professor
@@ -1011,3 +1011,167 @@ function removerSala(id)
 
 
 //TODO ENSALAMENTO
+
+function cadastrarEnsalamento(){
+	let body = {
+		"idSala": document.getElementById("id-sala").value,
+		"idProfessor": document.getElementById("id-professor").value,
+		"idTurma": document.getElementById("id-turma").value
+	}
+	//configuracao e realizacao do POST no endpoint "ensalamento"
+	fetch(url + "/cadastrar/ensalamento",
+	{   'method': 'POST',
+		'redirect': 'follow',
+		'headers':
+		{
+			'Content-Type': 'application/json',
+			'Accept': 'application/json'
+		},
+		'body': JSON.stringify(body)
+	})
+	//checa se requisicao deu certo
+	.then((response) =>
+	{
+        console.log(response)
+		if(response.ok)
+		{
+			return response.text()
+		}
+		else
+		{
+			return response.text().then((text) =>
+			{
+				throw new Error(text)
+			})
+		}
+	})
+	//trata resposta
+	.then((output) =>
+	{
+		console.log(output)
+		alert('Cadastro efetuado! :D')
+	})
+	//trata erro
+	.catch((error) =>
+	{
+		console.log(error)
+		alert('Não foi possível efetuar o cadastro! :(')
+	})
+
+}
+
+function listarEnsalamento(){
+	//da um GET no endpoint "ensalamentos"
+	fetch(url + '/ensalamentos')
+	.then(response => response.json())
+	.then((ensalamentos) =>
+	{
+
+		//pega div que vai conter a lista de professores
+		let listaEnsalamentos = document.getElementById('listar-ensalamentos')
+		
+		//limpa div
+        while(listaEnsalamentos.firstChild){
+            listaEnsalamentos.removeChild(listaEnsalamentos.firstChild)
+        }
+		
+		//preenche div com ensalamentos recebidos do GET
+		for(let ensalamento of ensalamentos)
+		{
+			//cria div para as informacoes de um ensalamento
+			let divEnsalamento = document.createElement('div')
+			divEnsalamento.setAttribute('class', 'form')
+			
+			//pega o id da sala cadastrado no ensalamento
+			let divCodigoSala = document.createElement('input')
+			divCodigoSala.placeholder = 'Código Sala'
+			divCodigoSala.value = ensalamento.idSala
+			divEnsalamento.appendChild(divCodigoSala)
+
+			//pega o id do professor cadastrado no ensalamento
+			let divCodigoProfessor = document.createElement('input')
+			divCodigoProfessor.placeholder = "Código Professor"
+			divCodigoProfessor.value = ensalamento.idProfessor
+			divEnsalamento.appendChild(divCodigoProfessor)
+
+			//pega o id da turma cadastrada no ensalamento
+			let divCodigoTurma = document.createElement('input')
+			divCodigoTurma.placeholder = 'Código da Turma'
+			divCodigoTurma.value = ensalamento.idTurma
+			divEnsalamento.appendChild(divCodigoTurma)
+
+			//cria o botao para remover o professor
+			let btnRemover = document.createElement('button')
+			btnRemover.innerHTML = 'Remover'
+			btnRemover.onclick = u => removerEnsalamento(professor.id)
+			btnRemover.style.marginRight = '5px'
+			
+			//cria o botao para atualizar o professor
+			let btnAtualizar = document.createElement('button')
+			btnAtualizar.innerHTML = 'Atualizar'
+			btnAtualizar.onclick = u => atualizarEnsalamento(ensalamento.id, divCodigoSala, divCodigoProfessor, divCodigoTurma)
+			btnAtualizar.style.marginLeft = '5px'
+			
+			//cria a div com os dois botoes
+			let divBotoes = document.createElement('div')
+			divBotoes.style.display = 'flex'
+			divBotoes.appendChild(btnRemover)
+			divBotoes.appendChild(btnAtualizar)
+			divEnsalamento.appendChild(divBotoes)
+			
+			//insere a div do aluno na div com a lista de alunos
+			listaEnsalamentos.appendChild(divEnsalamento)
+		}
+	})
+}
+
+function atualizarEnsalamento(id, divCodigoSala, divCodigoProfessor, divCodigoTurma)
+{
+	let body = {
+		"idSala":divCodigoSala.value,
+		"idProfessor":divCodigoProfessor.value,
+		"idTurma":divCodigoTurma
+	}
+
+	fetch(url + "/atualizar/ensalamento/" + id,
+	{
+		'method': 'POST',
+		'redirect': 'follow',
+		'headers':
+		{
+			'Content-Type': 'application/json',
+			'Accept': 'application/json'
+		},
+		'body': JSON.stringify(body)
+	})
+	.then((response) =>
+	{
+		if(response.ok)
+		{
+			return response.text()
+		}
+		else
+		{
+			return response.text().then((text) =>
+			{
+				throw new Error(text)
+			})
+		}
+	})
+	.then((output) =>
+	{
+		listarEnsalamento()
+		console.log(output)
+		alert('Ensalamento atualizado! \\o/')
+	})
+	.catch((error) =>
+	{
+		console.log(error)
+		console.log("erro")
+		alert('Não foi possível atualizar o Ensalamento :/')
+	})
+}
+
+
+
+

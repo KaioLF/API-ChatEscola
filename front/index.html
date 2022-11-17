@@ -12,26 +12,37 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-
     <nav id="menu">
-    <ul>
-        <li><i class="fa-solid fa-house"></i> <a href="index.html">Início</a></li>
-        <li> <i class="fa-brands fa-figma"></i> <a href="https://www.figma.com/proto/6DHYme8aK7Bo7ZL48I1Cau/CHAT-ESCOLA?node-id=1%3A7186&starting-point-node-id=1%3A7186">Sobre Nós</a></li>
-        <li><i class="fa-solid fa-chalkboard-user"></i> <a href="professores.html">Professores</a></li>
-        <li><i class="fa-solid fa-user"></i> <a href="alunos.html">Alunos</a></li>
-        <li><i class="fa-solid fa-users"></i> <a href="turmas.html">Turmas</a></li>
-        <li> <i class="fa-solid fa-address-book"></i> <a href="disciplinas.html">Disciplinas</a></li>
-        <li> <i class="fa-solid fa-calendar-days"></i> <a href="ensalamentos.html">Ensalamentos</a></li>
-        <li> <i class="fa-solid fa-calendar-days"></i> <a href="salas.html">Salas</a></li>
-    </ul>
+        <ul>
+            <div class="row">
+                <div class="col col-md-11">
+                    <li> <a href="index.html"> <i class="fa-solid fa-house"></i> Início </a> </li>
+                    <li> <a
+                        href="https://www.figma.com/proto/6DHYme8aK7Bo7ZL48I1Cau/CHAT-ESCOLA?node-id=1%3A7186&starting-point-node-id=1%3A7186"> <i class="fa-brands fa-figma"></i> Sobre
+                            Nós</a> </li>
+                    <li> <a href="professores.html"> <i class="fa-solid fa-chalkboard-user"> </i> Professores</a> </li>
+                    <li> <a href="alunos.html"> <i class="fa-solid fa-user"> </i> Alunos </a> </li>
+                    <li> <a href="turmas.html"> <i class="fa-solid fa-users"> </i> Turmas </a> </li>
+                    <li> <a href="disciplinas.html"> <i class="fa-solid fa-address-book"> </i> Disciplinas </a> </li>
+                    <li> <a href="ensalamentos.html"> <i class="fa-solid fa-calendar-days"> </i> Ensalamentos </a> </li>
+                    <li> <a href="salas.html"> <i class="fa-solid fa-door-open"></i> Salas</a></li>
+                </div>
+                <div class="col col-md-1">
+                    <li> <a href="#"> <i class="fa-solid fa-right-to-bracket"></i> Entrar</a> </li>
+                </div>
+            </div>
+        </ul>
     </nav>
     <div class="form">
-        <h1> Chat Escola <i id="1" class="fa-brands fa-whatsapp"></i></h1>
-        <input id="email" placeholder="Email" type="email" />
-        <input id="senha" placeholder="Senha" type="password" onblur="validaSenha(this.id)" />
-        <button id= "btn 1" type="button" class="btn btn-dark"> Entrar como Aluno</button>
-        <button id= "btn 2" type="button" class="btn btn-secondary"> Entrar como Professor</button>
+        <h1> Chat Escola <i class="fa-3x fa-solid fa-brands fa-whatsapp"> </i> </h1>
+        <input id="nome" placeholder="Nome do Usuário" type="text" onblur="validaNome(this.id)"/>
+        <input id="senha" placeholder="Senha do Usuário" type="number" onblur=""/>
+        <div style="display:flex">
+        </div>
+        <button type="button" class="btn btn-info">Cadastrar</button>
+        <button type="button" class="btn btn-primary">Cadastrar</button>
+        <br>
+        <p>Não possui cadastro? <a href="#">Cadastrar</a></p>
     </div>
 </body>
-
 </html>

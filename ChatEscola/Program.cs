@@ -597,16 +597,26 @@ namespace Trabalho
             //cadastrar turma
             app.MapPost("/cadastrar/turma", (ChatEscolaDB chatEscolaDB, Turma turma) =>
             { 
-                string a = "Falha no cadastro da turma.";
+                chatEscolaDB.Turmas.Add(turma);
+                chatEscolaDB.SaveChanges();
+                return "Cadastro efetuado com sucesso!";
+
+             //   string a = "Falha no cadastro da turma.";
 
                 var disci = chatEscolaDB.Disciplinas.Find(turma.idDisciplina);
                 
                 //TODO VERIFICAR DISCI CADASTRADA
-                    foreach(var alunonobanco in chatEscolaDB.Alunos) {
+                //Console.WriteLine(alunonobanco.nome == alunonaturma.nome);             
+                            
+
+                /*    foreach(var alunonobanco in chatEscolaDB.Alunos) {
+                        Console.WriteLine(alunonobanco.nome);
 
                         foreach(var alunonaturma in turma.alunos) {
+                            Console.WriteLine(alunonaturma.nome); 
 
-                            if(alunonobanco.nome == alunonaturma.nome) {               
+                            if(alunonobanco.nome == alunonaturma.nome) {  
+                                Console.WriteLine(alunonobanco.nome == alunonaturma.nome);             
                             chatEscolaDB.Turmas.Add(turma);
                             chatEscolaDB.SaveChanges();
                             a = "Turma Cadastrada"; 
@@ -614,8 +624,8 @@ namespace Trabalho
                         }
                     }
                 
-                return a; 
-            });
+                return a; */
+            }); 
 
             //atualizar turma
             app.MapPost("/atualizar/turma/{id}", (ChatEscolaDB chatEscolaDB, Turma turmaAtualizada, int id) =>
@@ -701,28 +711,30 @@ namespace Trabalho
 
                 int qtdalunos = 0;
 
+                string b = "bananinha";
+
                 foreach (var aluno in turma.alunos) 
                 {
                     qtdalunos = qtdalunos + 1; 
                 }
-
                 if (turma == null)
-                {
-                    return "Turma Inexistente";
-                } 
+                { 
+                    b = "Turma Inexistente";
+                }
                 else if (professor == null)
-                {
-                    return "Professor inexistente";
+                { 
+                    b = "Professor inexistente";
                 }
                 else if(sala.capacidade < qtdalunos) {
-                    return "Não há lugar suficiente para todos os alunos da turma na sala.";
+                    b = "Não há lugar suficiente para todos os alunos da turma na sala.";
                 } 
                 else
-                {
+                { 
                     chatEscolaDB.Ensalamentos.Add(ensalamento);
                     chatEscolaDB.SaveChanges();
-                    return "Ensalamento Cadastrado";
+                    b = "Ensalamento Cadastrado";
                 }
+                return b;
 
             });
 
