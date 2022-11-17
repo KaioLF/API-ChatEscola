@@ -9,16 +9,16 @@ O ChatEscola é uma API desenvolvida para um trabalho da disciplina de Desenvolv
 
 # Tecnologias utilizadas
 
-C#
-JavaScript
-HTML
-CSS
+-C#
+-JavaScript
+-HTML
+-CSS
 
-# Autor
+# Autores
 
-Kaio Mauricio Lima Fernandes
-Jonas Durau
-Layne Hipolito
-Monica de Sousa
+-Kaio Mauricio Lima Fernandes
+-Jonas Durau
+-Layne Hipolito
+-Monica de Sousa
 
 https://www.linkedin.com/in/kaio-mlf/
